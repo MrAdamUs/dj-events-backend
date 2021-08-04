@@ -1,5 +1,5 @@
 "use strict";
-const { sanitizeEntity } = require("strapi-utils");
+const { parseMultipartData, sanitizeEntity } = require("strapi-utils");
 
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
@@ -20,9 +20,7 @@ module.exports = {
     }
     return sanitizeEntity(entity, { model: strapi.models.events });
   },
-
-  // Update user evebts
-
+  // Update user event
   async update(ctx) {
     const { id } = ctx.params;
 
@@ -48,7 +46,6 @@ module.exports = {
 
     return sanitizeEntity(entity, { model: strapi.models.events });
   },
-
   // Delete a user event
   async delete(ctx) {
     const { id } = ctx.params;
